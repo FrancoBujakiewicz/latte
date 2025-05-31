@@ -1,1 +1,2 @@
-rootProject.name = "latte"
+
+ rootProject.name = "latte"
