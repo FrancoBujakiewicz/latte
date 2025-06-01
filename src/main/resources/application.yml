@@ -4,9 +4,8 @@
    datasource:
 
      url: jdbc:mariadb://localhost:3306/LatteIceCream
-     username: "admin"
-     password: "+V$u].M¿r=" 
-     # password: "${DB_PASSWORD}"
+     username: "${DB_USERNAME}"
+     password: "${DB_PASSWORD}"
 
    jpa:
 
