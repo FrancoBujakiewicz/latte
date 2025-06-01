@@ -27,14 +27,14 @@
     @Column(length = 50, unique = true, nullable = false)
     private String salt;
 
+    @Column(length = 30)
+    private String role;
+
     @CreationTimestamp
     private Date created_at;
 
     @UpdateTimestamp
     private Date updated_at;
-
-    @Column(length = 30)
-    private String role;
 
     public User() {}
 

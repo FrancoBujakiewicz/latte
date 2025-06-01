@@ -5,8 +5,6 @@
  import org.hibernate.annotations.UpdateTimestamp;
  import jakarta.persistence.*;
  import java.util.Date;
- import java.util.HashSet;
- import java.util.Set;
 
  @Entity
  public class Flavor
@@ -28,13 +26,13 @@
 
     public Flavor() {}
 
-    public Flavor(String flavor, Date created_at, Date updated_at)
+    public Flavor(String flavor)
 
     {
 
        this.flavor = flavor;
-       this.created_at = created_at;
-       this.updated_at = updated_at;
+       this.created_at = new Date();
+       this.updated_at = new Date();
 
      }
 
