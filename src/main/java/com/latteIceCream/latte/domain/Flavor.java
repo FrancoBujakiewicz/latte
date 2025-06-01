@@ -26,20 +26,15 @@
     @UpdateTimestamp
     private Date updated_at;
 
-    @Column(nullable = false)
-    @ManyToMany(mappedBy = "flavors")
-    private Set<IceCream> ice_creams = new HashSet<>();
-
     public Flavor() {}
 
-    public Flavor(String flavor, Date created_at, Date updated_at, Set<IceCream> ice_creams)
+    public Flavor(String flavor, Date created_at, Date updated_at)
 
     {
 
        this.flavor = flavor;
        this.created_at = created_at;
        this.updated_at = updated_at;
-       this.ice_creams = ice_creams;
 
      }
 
@@ -54,9 +49,6 @@
 
      public Date getUpdated_at() { return updated_at; }
      public void setUpdated_at(Date updated_at) { this.updated_at = updated_at; }
-
-     public Set<IceCream> getIce_creams() { return ice_creams; }
-     public void setIce_creams(Set<IceCream> ice_creams) { this.ice_creams = ice_creams; }
 
  }
 
