@@ -7,6 +7,7 @@
  import jakarta.persistence.*;
  import java.util.Date;
 
+ @Entity
  public class User
 
  {
@@ -15,19 +16,19 @@
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50, unique = true, nullable = false)
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
-    @Column(length = 30, unique = true, nullable = false)
+    @Column(nullable = false, length = 30, unique = true)
     private String phone_number;
 
-    @Column(length = 60, unique = true, name = "PASSWD_HASH", nullable = false)
+    @Column(nullable = false, length = 60, unique = true, name = "PASSWD_HASH")
     private String password;
 
-    @Column(length = 50, unique = true, nullable = false)
+    @Column(nullable = false, length = 50, unique = true)
     private String salt;
 
-    @Column(length = 30)
+    @Column(nullable = false, length = 30)
     private String role;
 
     @CreationTimestamp

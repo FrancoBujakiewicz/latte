@@ -16,7 +16,7 @@
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 30)
+    @Column(nullable = false, length = 30, unique = true)
     private String name;
 
     @CreationTimestamp
@@ -29,9 +29,8 @@
 
     {
 
-        this.name = name;
-        this.created_at = new Date();
-        this.updated_at = new Date();
+       this.name = name;
+       this.created_at = new Date();
 
     }
 

@@ -19,7 +19,7 @@
     private String size;
 
     @Column(length = 10, nullable = false)
-    private float price;
+    private String price;
 
     @CreationTimestamp
     private Date created_at;
@@ -29,7 +29,7 @@
 
     public Size() {}
 
-    public Size(String size, float price)
+    public Size(String size, String price)
 
     {
 
@@ -45,8 +45,8 @@
     public String getSize() { return size; }
     public void setSize(String size) { this.size = size; }
 
-    public float getPrice() { return price; }
-    public void setPrice(float price) { this.price = price; }
+    public String getPrice() { return price; }
+    public void setPrice(String price) { this.price = price; }
 
     public Date getCreated_at() { return created_at; }
     public void setCreated_at(Date created_at) { this.created_at = created_at; }

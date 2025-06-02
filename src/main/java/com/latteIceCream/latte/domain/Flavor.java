@@ -15,7 +15,7 @@
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 30, unique = true, nullable = false)
+    @Column(nullable = false, length = 30, unique = true)
     private String flavor;
 
     @CreationTimestamp
@@ -32,7 +32,6 @@
 
        this.flavor = flavor;
        this.created_at = new Date();
-       this.updated_at = new Date();
 
      }
 
