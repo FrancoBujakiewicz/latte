@@ -1,6 +1,7 @@
 
  package com.latteIceCream.latte.domain;
 
+
  import org.hibernate.annotations.CreationTimestamp;
  import org.hibernate.annotations.UpdateTimestamp;
  import jakarta.persistence.*;
