@@ -4,7 +4,7 @@
  import org.hibernate.annotations.CreationTimestamp;
  import org.hibernate.annotations.UpdateTimestamp;
  import jakarta.persistence.*;
-
+ import java.math.BigDecimal;
  import java.util.Date;
 
  @Entity
@@ -22,8 +22,8 @@
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false, length = 10)
-    private String price;
+    @Column(nullable = false, precision = 6, scale = 2)
+    private BigDecimal price; // BigDecimal to JPA let set precision and scale
 
     @ManyToOne
     private Label label;
@@ -36,7 +36,7 @@
 
     public Product() {}
 
-    public Product(String name, String description, String price)
+    public Product(String name, String description, BigDecimal price)
 
     {
 
@@ -56,8 +56,8 @@
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
 
-    public String getPrice(){ return price; }
-    public void setPrice(String price) { this.price = price; }
+    public BigDecimal getPrice(){ return price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
 
     public Label getLabel() { return label; }
     public void setLabel(Label label) { this.label = label; }
