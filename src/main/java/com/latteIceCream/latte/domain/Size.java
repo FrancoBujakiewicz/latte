@@ -16,7 +16,7 @@
     private Long id;
 
     @Column(length = 10, unique = true, nullable = false)
-    private String size;
+    private String value;
 
     @Column(length = 10, nullable = false)
     private String price;
@@ -29,11 +29,11 @@
 
     public Size() {}
 
-    public Size(String size, String price)
+    public Size(String value, String price)
 
     {
 
-       this.size = size;
+       this.value = value;
        this.price = price;
        this.created_at = new Date();
 
@@ -42,8 +42,8 @@
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getSize() { return size; }
-    public void setSize(String size) { this.size = size; }
+    public String getValue() { return value; }
+    public void setValue(String value) { this.value = value; }
 
     public String getPrice() { return price; }
     public void setPrice(String price) { this.price = price; }

@@ -1,7 +1,9 @@
 
  package com.latteIceCream.latte.repository;
 
- import com.latteIceCream.latte.domain.User;
+ import com.latteIceCream.latte.domain.Flavor;
  import org.springframework.data.jpa.repository.JpaRepository;
 
- public interface FlavorRepository extends JpaRepository<User, Long> { }
+ public interface FlavorRepository extends JpaRepository<Flavor, Long>
+
+ { Flavor findByName(String name); }

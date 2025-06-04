@@ -17,7 +17,7 @@
     private Long id;
 
     @Column(nullable = false, length = 30, unique = true)
-    private String flavor;
+    private String name;
 
     @CreationTimestamp
     private Date created_at;
@@ -27,11 +27,11 @@
 
     public Flavor() {}
 
-    public Flavor(String flavor)
+    public Flavor(String name)
 
     {
 
-       this.flavor = flavor;
+       this.name = name;
        this.created_at = new Date();
 
      }
@@ -39,8 +39,8 @@
      public Long getId() { return id; }
      public void setId(Long id) { this.id = id; }
 
-     public String getFlavor() { return flavor; }
-     public void setFlavor(String flavor) { this.flavor = flavor; }
+     public String getName() { return name; }
+     public void setName(String name) { this.name = name; }
 
      public Date getCreated_at() { return created_at; }
      public void setCreated_at(Date created_at) { this.created_at = created_at; }
