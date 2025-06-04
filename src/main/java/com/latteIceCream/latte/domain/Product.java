@@ -28,6 +28,9 @@
     @ManyToOne
     private Label label;
 
+    @Column(nullable = false, precision = 3)
+    private Integer stock;
+
     @CreationTimestamp
     private Date created_at;
 
@@ -36,13 +39,14 @@
 
     public Product() {}
 
-    public Product(String name, String description, BigDecimal price)
+    public Product(String name, String description, BigDecimal price, Integer stock)
 
     {
 
        this.name = name;
        this.description = description;
        this.price = price;
+       this.stock = stock;
        this.created_at = new Date();
 
     }
@@ -61,6 +65,9 @@
 
     public Label getLabel() { return label; }
     public void setLabel(Label label) { this.label = label; }
+
+    public Integer getStock() { return stock; }
+    public void setStock(Integer stock) { this.stock = stock; }
 
     public Date getCreated_at() { return created_at; }
     public void setCreated_at(Date created_at) { this.created_at = created_at; }
