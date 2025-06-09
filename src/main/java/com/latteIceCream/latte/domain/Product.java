@@ -22,7 +22,7 @@
     @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false, precision = 6, scale = 2)
+    @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal price; // BigDecimal to JPA let set precision and scale
 
     @ManyToOne

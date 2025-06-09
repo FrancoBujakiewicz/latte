@@ -19,7 +19,7 @@
     @Column(nullable = false, length = 10, unique = true)
     private String value;
 
-    @Column(nullable = false, precision = 6, scale = 2)
+    @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal price; // BigDecimal to JPA let set precision and scale
 
     @CreationTimestamp
