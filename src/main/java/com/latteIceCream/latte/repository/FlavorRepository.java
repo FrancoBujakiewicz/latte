@@ -3,7 +3,8 @@
 
  import com.latteIceCream.latte.domain.Flavor;
  import org.springframework.data.jpa.repository.JpaRepository;
+ import java.util.Optional;
 
  public interface FlavorRepository extends JpaRepository<Flavor, Long>
 
- { Flavor findByName(String name); }
+ { Optional<Flavor> findByName(String name); }
