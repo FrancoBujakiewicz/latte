@@ -16,3 +16,9 @@
        ddl-auto: update
 
      show-sql: true
+
+   server:
+
+     servlet:
+
+       context-path: /latte/api/v1
