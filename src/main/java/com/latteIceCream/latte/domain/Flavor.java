@@ -19,6 +19,9 @@
     @Column(nullable = false, length = 30, unique = true)
     private String name;
 
+    @Column(nullable = false)
+    private Boolean available = true;
+
     @CreationTimestamp
     private Date created_at;
 
@@ -41,6 +44,9 @@
 
      public String getName() { return name; }
      public void setName(String name) { this.name = name; }
+
+     public Boolean getAvailable() { return available; }
+     public void setAvailable(Boolean available) { this.available = available; }
 
      public Date getCreated_at() { return created_at; }
      public void setCreated_at(Date created_at) { this.created_at = created_at; }

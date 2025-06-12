@@ -1,5 +1,5 @@
 
- package com.latteIceCream.latte.controllers;
+ package com.latteIceCream.latte.controller;
 
  import com.latteIceCream.latte.domain.Flavor;
  import com.latteIceCream.latte.service.FlavorService;
