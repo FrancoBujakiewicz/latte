@@ -19,8 +19,8 @@
     @Column(nullable = false, length = 30, unique = true)
     private String name;
 
-    @Column(nullable = false)
-    private Boolean available = true;
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    private Boolean available;
 
     @CreationTimestamp
     private Date created_at;
