@@ -1,13 +1,17 @@
 
  package com.latteIceCream.latte.controller;
 
+ import java.util.List;
+
  import com.latteIceCream.latte.domain.Flavor;
+ import com.latteIceCream.latte.dto.FlavorDTO;
  import com.latteIceCream.latte.service.FlavorService;
 
  import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.http.HttpStatus;
  import org.springframework.http.ResponseEntity;
  import org.springframework.web.bind.annotation.*;
+
+ import jakarta.validation.Valid;
 
  @RestController
  @RequestMapping("/flavors")
@@ -27,7 +31,7 @@
 
        if(createdFlavor == null){ return ResponseEntity.badRequest().build(); }
 
-       return new ResponseEntity<>(createdFlavor, HttpStatus.CREATED);
+       return ResponseEntity.ok(flavor);
 
     }
 
@@ -43,5 +47,24 @@
        return ResponseEntity.ok(flavor);
 
     }
+
+    @PatchMapping("/{name}")
+    public ResponseEntity<Flavor> patchFlavor(@PathVariable String name, @RequestBody @Valid FlavorDTO flavorDTO)
+
+    { return ResponseEntity.ok(flavorService.updateFlavor(flavorDTO)); }
+
+    @DeleteMapping("/{name}")
+    public ResponseEntity deleteFlavor(@PathVariable String name)
+
+    {
+
+       if(!flavorService.deleteFlavor(name)) { return ResponseEntity.internalServerError().build(); }
+
+       return ResponseEntity.noContent().build();
+
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Flavor>> getAll(){ return ResponseEntity.ok(flavorService.getAllFlavors()); }
 
  }

@@ -2,6 +2,7 @@
  package com.latteIceCream.latte.service;
 
  import com.latteIceCream.latte.domain.Flavor;
+ import com.latteIceCream.latte.dto.FlavorDTO;
  import com.latteIceCream.latte.repository.FlavorRepository;
 
  import org.springframework.stereotype.Service;
@@ -31,19 +32,30 @@
 
     }
 
-   // @Transactional
-   // public Flavor updateFlavor(Flavor flavor){}
-
     @Transactional
-    public boolean deleteFlavor(Long id)
+    public Flavor updateFlavor(FlavorDTO flavorDTO)
 
     {
 
-       Optional<Flavor> flavor = flavorRepo.findById(id);
+       Flavor flavor = readFlavor(flavorDTO.name());
 
-       if(!flavor.isPresent()){ return false; }
+       flavor.setName(flavorDTO.name());
+       flavor.setAvailable(flavorDTO.available());
 
-       flavorRepo.deleteById(id); return true;
+       return flavorRepo.save(flavor);
+
+    }
+
+    @Transactional
+    public boolean deleteFlavor(String name)
+
+    {
+
+       Optional<Flavor> flavor = flavorRepo.findByName(name);
+
+       if(flavor.isEmpty()){ return false; }
+
+       flavorRepo.deleteByName(name); return true;
 
     }
 
