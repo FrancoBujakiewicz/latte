@@ -19,7 +19,7 @@
     @Column(nullable = false, length = 30, unique = true)
     private String name;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
+    @Column(nullable = false)
     private Boolean available;
 
     @CreationTimestamp

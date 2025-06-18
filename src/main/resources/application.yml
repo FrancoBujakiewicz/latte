@@ -17,8 +17,6 @@
 
      show-sql: true
 
-   server:
+   servlet:
 
-     servlet:
-
-       context-path: /latte/api/v1
+     context-path: /latte/api/v1
