@@ -1,10 +1,11 @@
 
  package com.latteIceCream.latte.domain;
 
-
  import org.hibernate.annotations.CreationTimestamp;
  import org.hibernate.annotations.UpdateTimestamp;
+
  import jakarta.persistence.*;
+
  import java.util.Date;
 
  @Entity
@@ -12,32 +13,25 @@
 
  {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private Long id;
 
-    @Column(nullable = false, length = 30, unique = true)
-    private String name;
+     @Column(nullable = false, length = 30, unique = true)
+     private String name;
 
-    @Column(nullable = false)
-    private Boolean available;
+     @Column(nullable = false, columnDefinition = "BIT DEFAULT b'1'")
+     private Boolean available;
 
-    @CreationTimestamp
-    private Date created_at;
+     @CreationTimestamp
+     private Date created_at;
 
-    @UpdateTimestamp
-    private Date updated_at;
+     @UpdateTimestamp
+     private Date updated_at;
 
-    public Flavor() {}
+     public Flavor() {}
 
-    public Flavor(String name)
-
-    {
-
-       this.name = name;
-       this.created_at = new Date();
-
-     }
+     public Flavor(String name) { this.name = name; }
 
      public Long getId() { return id; }
      public void setId(Long id) { this.id = id; }

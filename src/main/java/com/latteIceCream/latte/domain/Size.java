@@ -22,7 +22,7 @@
     @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal price; // BigDecimal to JPA let set precision and scale
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "BIT DEFAULT b'1'")
     private Boolean available;
 
     @CreationTimestamp

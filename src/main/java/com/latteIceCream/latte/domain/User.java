@@ -3,8 +3,11 @@
 
  import org.hibernate.annotations.CreationTimestamp;
  import org.hibernate.annotations.UpdateTimestamp;
+
  import org.springframework.security.crypto.bcrypt.BCrypt;
+
  import jakarta.persistence.*;
+
  import java.util.Date;
 
  @Entity
@@ -28,8 +31,8 @@
     @Column(nullable = false, length = 50, unique = true)
     private String salt;
 
-    @Column(nullable = false, length = 30)
-    private String role;
+    @ManyToOne
+    private Role role;
 
     @CreationTimestamp
     private Date created_at;
@@ -39,16 +42,15 @@
 
     public User() {}
 
-    public User(String username, String phone_number, String password, String role)
+    public User(String username, String phone_number, String password, Role role)
 
     {
 
-      this.username = username;
-      this.phone_number = phone_number;
-      this.salt = BCrypt.gensalt();
-      this.password = BCrypt.hashpw(password, this.salt);
-      this.created_at = new Date();
-      this.role = role;
+       this.username = username;
+       this.phone_number = phone_number;
+       this.salt = BCrypt.gensalt();
+       this.password = BCrypt.hashpw(password, this.salt);
+       this.role = role;
 
     }
 
@@ -73,8 +75,8 @@
     public String getSalt() { return salt; }
     public void setSalt(String salt) { this.salt = salt; }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public Role getRole() { return role; }
+    public void setRole(Role role) { this.role = role; }
 
     public boolean verifiedPassword(String password, String password_hash)
 
