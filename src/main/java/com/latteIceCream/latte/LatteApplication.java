@@ -14,3 +14,4 @@
 	{ SpringApplication.run(LatteApplication.class, args); }
 
  }
+
