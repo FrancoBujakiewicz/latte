@@ -1,37 +1,37 @@
 
  package com.latteIceCream.latte.domain;
 
- import jakarta.persistence.MappedSuperclass;
- import jakarta.persistence.Column;
+ import org.hibernate.annotations.CreationTimestamp;
+ import org.hibernate.annotations.UpdateTimestamp;
 
- // Class to inherit coincident fields between Role, Action and Product classes.
+ import jakarta.persistence.*;
+
+ import java.util.Date;
+
+ // Class to inherit the common fields between all domain classes
 
  @MappedSuperclass
- public class Describable
+ public class DomainEntity
 
  {
 
-    @Column(nullable = false, length = 50)
-    protected String name;
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private Long id;
 
-    @Column(nullable = false)
-    protected String description;
+     @CreationTimestamp
+     private Date created_at;
 
-    public Describable() {}
+     @UpdateTimestamp
+     private Date updated_at;
 
-    public Describable(String name, String description)
+     public Long getId() { return id; }
+     public void setId(Long id) { this.id = id; }
 
-    {
+     public Date getCreated_at() { return created_at; }
+     public void setCreated_at(Date created_at) { this.created_at = created_at; }
 
-       this.name = name;
-       this.description = description;
-
-    }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+     public Date getUpdated_at() { return updated_at; }
+     public void setUpdated_at(Date updated_at) { this.updated_at = updated_at; }
 
  }
