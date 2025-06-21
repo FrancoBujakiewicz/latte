@@ -1,22 +1,17 @@
 
  package com.latteIceCream.latte.domain;
 
- import org.hibernate.annotations.CreationTimestamp;
- import org.hibernate.annotations.UpdateTimestamp;
-
  import jakarta.persistence.*;
 
- import java.util.Date;
  import java.util.List;
 
  @Entity
- public class Role extends Describable
+ public class Role extends DomainEntity
 
  {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(nullable = false, length = 30)
+    private String name;
 
     @ManyToMany
     @JoinTable
@@ -29,33 +24,21 @@
     )
     private List<Action> actions;
 
-    @CreationTimestamp
-    private Date created_at;
-
-    @UpdateTimestamp
-    private Date updated_at;
-
     public Role() {}
 
-    public Role(String name, String description, List<Action> actions)
+    public Role(String name, List<Action> actions)
 
     {
 
-       super(name, description);
+       this.name = name;
        this.actions = actions;
 
     }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
     public List<Action> getActions() { return actions; }
     public void setActions(List<Action> actions) { this.actions = actions; }
-
-    public Date getCreated_at() { return created_at; }
-    public void setCreated_at(Date created_at) { this.created_at = created_at; }
-
-    public Date getUpdated_at() { return updated_at; }
-    public void setUpdated_at(Date updated_at) { this.updated_at = updated_at; }
 
  }
