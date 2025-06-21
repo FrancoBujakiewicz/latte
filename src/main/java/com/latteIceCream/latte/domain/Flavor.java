@@ -12,7 +12,7 @@
      @Column(nullable = false, length = 30, unique = true)
      private String name;
 
-     @Column(nullable = false, columnDefinition = "BIT DEFAULT b'1'")
+     @Column(nullable = false)
      private Boolean available;
 
      public Flavor() {}

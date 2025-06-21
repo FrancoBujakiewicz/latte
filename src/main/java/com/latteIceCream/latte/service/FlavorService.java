@@ -33,14 +33,18 @@
     }
 
     @Transactional
-    public Flavor updateFlavor(FlavorDTO flavorDTO)
+    public Flavor updateFlavor(String name, FlavorDTO flavorDTO)
 
     {
 
-       Flavor flavor = readFlavor(flavorDTO.name());
+       Optional<Flavor> wrappedFlavor = flavorRepo.findByName(name);
 
-       flavor.setName(flavorDTO.name());
-       flavor.setAvailable(flavorDTO.available());
+       Flavor flavor = wrappedFlavor.orElse(null);
+
+       if(flavor == null) { return null; }
+
+       if(!(flavorDTO.name() == null)) { flavor.setName(flavorDTO.name()); }
+       if(!(flavorDTO.available() == null)) { flavor.setAvailable(flavorDTO.available()); }
 
        return flavorRepo.save(flavor);
 
