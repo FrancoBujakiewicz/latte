@@ -7,12 +7,9 @@
  import java.math.BigDecimal;
 
  @Entity
- public class Size extends DomainEntity
+ public class PortionSize extends Describable
 
  {
-
-    @Column(nullable = false, length = 10, unique = true)
-    private String value;
 
     @Column(nullable = false, precision = 8, scale = 2)
     private BigDecimal price; // BigDecimal to JPA let set precision and scale
@@ -20,19 +17,16 @@
     @Column(nullable = false)
     private Boolean available;
 
-    public Size() {}
+    public PortionSize() {}
 
-    public Size(String value, BigDecimal price)
+    public PortionSize(String name, String description, BigDecimal price)
 
     {
 
-       this.value = value;
+       super(name, description);
        this.price = price;
 
     }
-
-    public String getValue() { return value; }
-    public void setValue(String value) { this.value = value; }
 
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
