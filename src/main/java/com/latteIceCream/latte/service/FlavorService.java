@@ -33,7 +33,7 @@
     }
 
     @Transactional
-    public Flavor updateFlavor(String name, FlavorDTO flavorDTO)
+    public Flavor updateFlavor(String name, FlavorDTO flvDTO)
 
     {
 
@@ -43,8 +43,8 @@
 
        if(flavor == null) { return null; }
 
-       if(!(flavorDTO.name() == null)) { flavor.setName(flavorDTO.name()); }
-       if(!(flavorDTO.available() == null)) { flavor.setAvailable(flavorDTO.available()); }
+       if(!(flvDTO.name() == null)) { flavor.setName(flvDTO.name()); }
+       if(!(flvDTO.available() == null)) { flavor.setAvailable(flvDTO.available()); }
 
        return flavorRepo.save(flavor);
 

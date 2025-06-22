@@ -8,6 +8,8 @@
  import com.latteIceCream.latte.dto.FlavorDTO;
  import com.latteIceCream.latte.service.FlavorService;
 
+ import jakarta.validation.Valid;
+
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.http.ResponseEntity;
  import org.springframework.web.bind.annotation.*;
@@ -23,13 +25,13 @@
     FlavorService flavorService;
 
     @PostMapping
-    public ResponseEntity<Flavor> postFlavor(@RequestBody Flavor flavor)
+    public ResponseEntity<Flavor> postFlavor(@Valid @RequestBody FlavorDTO flvDTO)
 
     {
 
-       Flavor createdFlavor = flavorService.createFlavor(flavor);
+       Flavor flavor = flavorService.createFlavor(flvDTO.toFlavor(flvDTO));
 
-       if(createdFlavor == null){ return ResponseEntity.badRequest().build(); }
+       if(flavor == null){ return ResponseEntity.badRequest().build(); }
 
        URI location = ServletUriComponentsBuilder
                       .fromCurrentRequest()
@@ -54,12 +56,12 @@
 
     }
 
-    @PatchMapping("/{name}")
-    public ResponseEntity<Flavor> patchFlavor(@PathVariable String name, @RequestBody FlavorDTO flavorDTO)
+    @PatchMapping("/{name}") public ResponseEntity<Flavor> patchFlavor
+    (@PathVariable String name, @Valid @RequestBody FlavorDTO flvDTO)
 
     {
 
-       Flavor flavor = flavorService.updateFlavor(name, flavorDTO);
+       Flavor flavor = flavorService.updateFlavor(name, flvDTO);
 
        if(flavor == null){ return ResponseEntity.notFound().build(); }
 
