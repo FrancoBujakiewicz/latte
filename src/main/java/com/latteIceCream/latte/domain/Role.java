@@ -1,17 +1,17 @@
 
  package com.latteIceCream.latte.domain;
 
- import jakarta.persistence.*;
+ import jakarta.persistence.Entity;
+ import jakarta.persistence.ManyToMany;
+ import jakarta.persistence.JoinTable;
+ import jakarta.persistence.JoinColumn;
 
  import java.util.List;
 
  @Entity
- public class Role extends DomainEntity
+ public class Role extends Describable
 
  {
-
-    @Column(nullable = false, length = 30)
-    private String name;
 
     @ManyToMany
     @JoinTable
@@ -26,17 +26,14 @@
 
     public Role() {}
 
-    public Role(String name, List<Action> actions)
+    public Role(String name, String description, List<Action> actions)
 
     {
 
-       this.name = name;
+       super(name, description);
        this.actions = actions;
 
     }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
 
     public List<Action> getActions() { return actions; }
     public void setActions(List<Action> actions) { this.actions = actions; }
