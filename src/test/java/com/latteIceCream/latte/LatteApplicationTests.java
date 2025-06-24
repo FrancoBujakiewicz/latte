@@ -1,13 +1,10 @@
-package com.latteIceCream.latte;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+ package com.latteIceCream.latte;
 
-@SpringBootTest
-class LatteApplicationTests {
+ import org.junit.jupiter.api.Test;
+ import org.springframework.boot.test.context.SpringBootTest;
 
-	@Test
-	void contextLoads() {
-	}
+ @SpringBootTest
+ class LatteApplicationTests
 
-}
+ { @Test void contextLoads() {} }
