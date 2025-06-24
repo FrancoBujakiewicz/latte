@@ -17,13 +17,13 @@
 
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
+     protected Long id;
 
      @CreationTimestamp
-     private Date created_at;
+     protected Date created_at;
 
      @UpdateTimestamp
-     private Date updated_at;
+     protected Date updated_at;
 
      public Long getId() { return id; }
      public void setId(Long id) { this.id = id; }

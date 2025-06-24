@@ -10,10 +10,10 @@
  {
 
      @Column(nullable = false, length = 75, unique = true)
-     private String name;
+     protected String name;
 
      @Column(nullable = false)
-     private String description;
+     protected String description;
 
      public Describable() {}
 

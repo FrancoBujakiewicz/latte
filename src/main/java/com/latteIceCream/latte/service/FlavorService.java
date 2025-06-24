@@ -18,16 +18,24 @@
  {
 
     @Autowired
-    FlavorRepository flavorRepo;
+    FlavorRepository flvRepo;
 
     @Transactional
-    public Flavor createFlavor(Flavor flavor) { return flavorRepo.save(flavor); }
+    public Flavor createFlavor(FlavorDTO flvDTO)
+
+    {
+
+        Flavor flavor = new Flavor(flvDTO.name(), flvDTO.description(), flvDTO.available());
+
+        return flvRepo.save(flavor);
+
+    }
 
     public Flavor readFlavor(String name)
 
     {
 
-       Optional<Flavor> flavor = flavorRepo.findByName(name);
+       Optional<Flavor> flavor = flvRepo.findByName(name);
        return flavor.orElse(null);
 
     }
@@ -37,7 +45,7 @@
 
     {
 
-       Optional<Flavor> wrappedFlavor = flavorRepo.findByName(name);
+       Optional<Flavor> wrappedFlavor = flvRepo.findByName(name);
 
        Flavor flavor = wrappedFlavor.orElse(null);
 
@@ -46,7 +54,7 @@
        if(!(flvDTO.name() == null)) { flavor.setName(flvDTO.name()); }
        if(!(flvDTO.available() == null)) { flavor.setAvailable(flvDTO.available()); }
 
-       return flavorRepo.save(flavor);
+       return flvRepo.save(flavor);
 
     }
 
@@ -55,14 +63,14 @@
 
     {
 
-       Optional<Flavor> flavor = flavorRepo.findByName(name);
+       Optional<Flavor> flavor = flvRepo.findByName(name);
 
        if(flavor.isEmpty()){ return false; }
 
-       flavorRepo.deleteByName(name); return true;
+       flvRepo.deleteByName(name); return true;
 
     }
 
-    public List<Flavor> getAllFlavors() { return flavorRepo.findAll(); }
+    public List<Flavor> getAllFlavors() { return flvRepo.findAll(); }
 
  }

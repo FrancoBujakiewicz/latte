@@ -29,7 +29,7 @@
 
     {
 
-       Flavor flavor = flavorService.createFlavor(flvDTO.toFlavor(flvDTO));
+       Flavor flavor = flavorService.createFlavor(flvDTO);
 
        if(flavor == null){ return ResponseEntity.badRequest().build(); }
 
