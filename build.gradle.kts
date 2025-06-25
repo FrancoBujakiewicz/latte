@@ -26,6 +26,8 @@
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
+    testImplementation("org.mockito:mockito-core:4.8.1")
+    testImplementation("org.mockito:mockito-junit-jupiter:4.8.1")
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
