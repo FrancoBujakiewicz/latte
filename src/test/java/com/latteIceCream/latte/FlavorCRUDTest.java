@@ -14,7 +14,7 @@
 
  @SpringBootTest
  @AutoConfigureMockMvc
- public class FlavorIntegrationTest
+ public class FlavorIntegrationTest extends LatteApplicationTest
 
  {
 

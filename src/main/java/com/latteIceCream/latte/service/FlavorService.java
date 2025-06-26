@@ -23,38 +23,34 @@
     @Transactional
     public Flavor createFlavor(FlavorDTO flvDTO)
 
-    {
+    { return flvRepo.save(new Flavor(flvDTO.name(), flvDTO.description(), flvDTO.available())); }
 
-        Flavor flavor = new Flavor(flvDTO.name(), flvDTO.description(), flvDTO.available());
-
-        return flvRepo.save(flavor);
-
-    }
-
-    public Flavor readFlavor(String name)
-
-    {
-
-       Optional<Flavor> flavor = flvRepo.findByName(name);
-       return flavor.orElse(null);
-
-    }
+    public Flavor readFlavor(String name) { return flvRepo.findByName(name).orElse(null); }
 
     @Transactional
     public Flavor updateFlavor(String name, FlavorDTO flvDTO)
 
     {
 
-       Optional<Flavor> wrappedFlavor = flvRepo.findByName(name);
+       return flvRepo.findByName(name).map
 
-       Flavor flavor = wrappedFlavor.orElse(null);
+       (
+               
+          flavor ->
 
-       if(flavor == null) { return null; }
+          {
 
-       if(!(flvDTO.name() == null)) { flavor.setName(flvDTO.name()); }
-       if(!(flvDTO.available() == null)) { flavor.setAvailable(flvDTO.available()); }
+             if (flvDTO.name() != null) { flavor.setName(flvDTO.name()); }
+             if (flvDTO.description() != null) { flavor.setDescription(flvDTO.description()); }
+             if (flvDTO.available() != null) { flavor.setAvailable(flvDTO.available()); }
 
-       return flvRepo.save(flavor);
+             return flvRepo.save(flavor);
+
+          }
+
+       )
+
+       .orElse(null);
 
     }
 
@@ -63,9 +59,7 @@
 
     {
 
-       Optional<Flavor> flavor = flvRepo.findByName(name);
-
-       if(flavor.isEmpty()){ return false; }
+       if(flvRepo.findByName(name).isEmpty()) { return false; }
 
        flvRepo.deleteByName(name); return true;
 

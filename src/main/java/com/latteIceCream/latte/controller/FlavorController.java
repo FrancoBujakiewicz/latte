@@ -3,6 +3,7 @@
 
  import java.net.URI;
  import java.util.List;
+ import java.util.Optional;
 
  import com.latteIceCream.latte.domain.Flavor;
  import com.latteIceCream.latte.dto.FlavorDTO;
@@ -46,15 +47,7 @@
     @GetMapping("/{name}")
     public ResponseEntity<Flavor> getFlavor(@PathVariable String name)
 
-    {
-
-       Flavor flavor = flavorService.readFlavor(name);
-
-       if(flavor == null){ return ResponseEntity.notFound().build(); }
-
-       return ResponseEntity.ok(flavor);
-
-    }
+    { return ResponseEntity.of(Optional.ofNullable(flavorService.readFlavor(name))); }
 
     @PatchMapping("/{name}") public ResponseEntity<Flavor> patchFlavor
     (@PathVariable String name, @Valid @RequestBody FlavorDTO flvDTO)
@@ -63,7 +56,7 @@
 
        Flavor flavor = flavorService.updateFlavor(name, flvDTO);
 
-       if(flavor == null){ return ResponseEntity.notFound().build(); }
+       if(flavor == null) { return ResponseEntity.notFound().build(); }
 
        return ResponseEntity.ok(flavor);
 
