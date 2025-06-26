@@ -6,6 +6,7 @@
  import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
  import org.springframework.boot.test.context.SpringBootTest;
  import org.springframework.http.MediaType;
+ import org.springframework.test.context.ActiveProfiles;
  import org.springframework.test.web.servlet.MockMvc;
  import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
  import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -14,9 +15,8 @@
 
  @SpringBootTest
  @AutoConfigureMockMvc
- public class FlavorIntegrationTest extends LatteApplicationTest
-
- {
+ @ActiveProfiles("test")
+ public class FlavorCRUDTest {
 
     @Autowired
     MockMvc mockMvc;
