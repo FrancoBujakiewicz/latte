@@ -1,7 +1,7 @@
 
  package com.latteIceCream.latte.domain;
 
- import com.latteIceCream.latte.domain.superclasses.Describable;
+ import com.latteIceCream.latte.domain.superclass.Describable;
 
  import jakarta.persistence.Entity;
  import jakarta.persistence.Column;

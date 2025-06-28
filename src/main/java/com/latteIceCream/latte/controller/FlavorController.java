@@ -36,7 +36,7 @@
 
        URI location = ServletUriComponentsBuilder
                       .fromCurrentRequest()
-                      .path("/{name}")
+                      .path("/{id}")
                       .buildAndExpand(flavor.getName())
                       .toUri();
 
@@ -44,17 +44,17 @@
 
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<Flavor> getFlavor(@PathVariable String name)
+    @GetMapping("/{id}")
+    public ResponseEntity<Flavor> getFlavor(@PathVariable Long id)
 
-    { return ResponseEntity.of(Optional.ofNullable(flavorService.readFlavor(name))); }
+    { return ResponseEntity.of(Optional.ofNullable(flavorService.readFlavor(id))); }
 
-    @PatchMapping("/{name}") public ResponseEntity<Flavor> patchFlavor
-    (@PathVariable String name, @Valid @RequestBody FlavorDTO flvDTO)
+    @PatchMapping("/{id}") public ResponseEntity<Flavor> patchFlavor
+    (@PathVariable Long id, @Valid @RequestBody FlavorDTO flvDTO)
 
     {
 
-       Flavor flavor = flavorService.updateFlavor(name, flvDTO);
+       Flavor flavor = flavorService.updateFlavor(id, flvDTO);
 
        if(flavor == null) { return ResponseEntity.notFound().build(); }
 
@@ -62,7 +62,7 @@
 
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteFlavor(@PathVariable Long id)
 
     {

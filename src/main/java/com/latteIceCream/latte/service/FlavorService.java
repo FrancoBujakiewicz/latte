@@ -24,18 +24,14 @@
 
     { return flvRepo.save(new Flavor(flvDTO.name(), flvDTO.description(), flvDTO.available())); }
 
-    public Flavor readFlavor(String name) { return flvRepo.findByName(name).orElse(null); }
+    public Flavor readFlavor(Long id) { return flvRepo.findById(id).orElse(null); }
 
     @Transactional
-    public Flavor updateFlavor(String name, FlavorDTO flvDTO)
+    public Flavor updateFlavor(Long id, FlavorDTO flvDTO)
 
     {
 
-       return flvRepo.findByName(name).map
-
-       (
-               
-          flavor ->
+       return flvRepo.findById(id).map(flavor ->
 
           {
 
@@ -47,9 +43,7 @@
 
           }
 
-       )
-
-       .orElse(null);
+       ).orElse(null);
 
     }
 
