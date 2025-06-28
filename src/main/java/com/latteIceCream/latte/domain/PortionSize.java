@@ -21,12 +21,13 @@
 
     public PortionSize() {}
 
-    public PortionSize(String name, String description, BigDecimal price)
+    public PortionSize(String name, String description, BigDecimal price, Boolean available)
 
     {
 
        super(name, description);
        this.price = price;
+       this.available = available;
 
     }
 
