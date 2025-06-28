@@ -1,5 +1,5 @@
 
- package com.latteIceCream.latte.domain;
+ package com.latteIceCream.latte.domain.superclasses;
 
  import org.hibernate.annotations.CreationTimestamp;
  import org.hibernate.annotations.UpdateTimestamp;

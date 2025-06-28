@@ -1,5 +1,5 @@
 
- package com.latteIceCream.latte.domain;
+ package com.latteIceCream.latte.domain.superclasses;
 
  import jakarta.persistence.Column;
  import jakarta.persistence.MappedSuperclass;

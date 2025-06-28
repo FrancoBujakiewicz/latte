@@ -1,6 +1,8 @@
 
  package com.latteIceCream.latte.domain;
 
+ import com.latteIceCream.latte.domain.superclasses.DomainEntity;
+
  import jakarta.persistence.Entity;
  import jakarta.persistence.Column;
 
