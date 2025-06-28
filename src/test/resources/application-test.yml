@@ -1,10 +1,8 @@
 
  spring:
 
-  datasource:
+   datasource:
 
-    url: "${DB_URL_TEST}"
-    username: "${DB_USERNAME_TEST}"
-    password: "${DB_PASSWORD_TEST}"
-
-    driver-class-name: org.mariadb.jdbc.Driver
+     url: "${DB_URL_TEST}"
+     username: "${DB_USERNAME_TEST}"
+     password: "${DB_PASSWORD_TEST}"

@@ -16,7 +16,7 @@
     private BigDecimal price; // BigDecimal to JPA let set precision and scale
 
     @ManyToOne
-    private Label label;
+    private Brand brand;
 
     @Column(nullable = false, precision = 3)
     private Integer stock;
@@ -36,8 +36,8 @@
     public BigDecimal getPrice(){ return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
 
-    public Label getLabel() { return label; }
-    public void setLabel(Label label) { this.label = label; }
+    public Brand getLabel() { return brand; }
+    public void setLabel(Brand brand) { this.brand = brand; }
 
     public Integer getStock() { return stock; }
     public void setStock(Integer stock) { this.stock = stock; }
