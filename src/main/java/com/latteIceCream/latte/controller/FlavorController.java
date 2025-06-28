@@ -63,11 +63,11 @@
     }
 
     @DeleteMapping("/{name}")
-    public ResponseEntity deleteFlavor(@PathVariable String name)
+    public ResponseEntity deleteFlavor(@PathVariable Long id)
 
     {
 
-       if(!flavorService.deleteFlavor(name)) { return ResponseEntity.internalServerError().build(); }
+       if(!flavorService.deleteFlavor(id)) { return ResponseEntity.internalServerError().build(); }
 
        return ResponseEntity.noContent().build();
 

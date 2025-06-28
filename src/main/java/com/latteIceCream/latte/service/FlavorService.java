@@ -54,13 +54,13 @@
     }
 
     @Transactional
-    public boolean deleteFlavor(String name)
+    public boolean deleteFlavor(Long id)
 
     {
 
-       if(flvRepo.findByName(name).isEmpty()) { return false; }
+       if(flvRepo.findById(id).isEmpty()) { return false; }
 
-       flvRepo.deleteByName(name); return true;
+       flvRepo.deleteById(id); return true;
 
     }
 
