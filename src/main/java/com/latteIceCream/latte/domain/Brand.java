@@ -5,16 +5,16 @@
  import jakarta.persistence.Column;
 
  @Entity
- public class Label extends DomainEntity
+ public class Brand extends DomainEntity
 
  {
 
     @Column(nullable = false, length = 30, unique = true)
     private String name;
 
-    public Label() {}
+    public Brand() {}
 
-    public Label(String name) { this.name = name; }
+    public Brand(String name) { this.name = name; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

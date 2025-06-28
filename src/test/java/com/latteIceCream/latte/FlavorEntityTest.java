@@ -16,13 +16,13 @@
  @SpringBootTest
  @AutoConfigureMockMvc
  @ActiveProfiles("test")
- public class FlavorCRUDTest {
+ public class FlavorEntityTest {
 
     @Autowired
     MockMvc mockMvc;
 
     @Test
-    public void flavorRequest() throws Exception
+    public void flavorPostRequest() throws Exception
 
     {
 
