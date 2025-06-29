@@ -1,6 +1,10 @@
 
  spring:
 
+   application:
+
+     name: latte
+
    datasource:
      
      url: "${DB_URL}"

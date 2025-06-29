@@ -3,6 +3,7 @@
 
    datasource:
 
-     url: "${DB_URL_TEST}"
+     url: "${SPRING_DATASOURCE_URL}"
      username: "${DB_USERNAME_TEST}"
      password: "${DB_PASSWORD_TEST}"
+
