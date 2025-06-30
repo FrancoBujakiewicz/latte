@@ -25,4 +25,6 @@
 
  )
 
+ implements DTO
+
  {}

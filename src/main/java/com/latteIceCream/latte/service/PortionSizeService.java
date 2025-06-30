@@ -12,15 +12,16 @@
  import java.util.List;
 
  @Service
- public class PortionSizeService
+ public class PortionSizeService implements CRUDService<PortionSize, Long, PortionSizeDTO>
 
  {
 
     @Autowired
     PortionSizeRepository pszRepo;
 
+    @Override
     @Transactional
-    public PortionSize createPortionSize(PortionSizeDTO pszDTO)
+    public PortionSize create(PortionSizeDTO pszDTO)
 
     {
 
@@ -30,12 +31,13 @@
 
     }
 
-     public PortionSize readPortionSize(Long id)
+     public PortionSize read(Long id)
 
      { return pszRepo.findById(id).orElse(null); }
 
+     @Override
      @Transactional
-     public PortionSize updatePortionSize(Long id, PortionSizeDTO pszDTO)
+     public PortionSize update(Long id, PortionSizeDTO pszDTO)
 
      {
 
@@ -56,8 +58,9 @@
 
      }
 
+     @Override
      @Transactional
-     public boolean deletePortionSize(Long id)
+     public boolean delete(Long id)
 
      {
 
@@ -67,6 +70,7 @@
 
      }
 
-     public List<PortionSize> getAllPortionSizes() { return pszRepo.findAll(); }
+     @Override
+     public List<PortionSize> getAll() { return pszRepo.findAll(); }
 
  }

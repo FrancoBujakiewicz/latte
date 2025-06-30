@@ -4,6 +4,6 @@
    datasource:
 
      url: "${SPRING_DATASOURCE_URL}"
-     username: "${DB_USERNAME_TEST}"
-     password: "${DB_PASSWORD_TEST}"
+     username: "${SPRING_DATASOURCE_USERNAME}"
+     password: "${SPRING_DATASOURCE_PASSWORD}"
 

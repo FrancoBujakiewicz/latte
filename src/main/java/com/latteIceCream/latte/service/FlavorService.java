@@ -12,22 +12,25 @@
  import java.util.List;
 
  @Service
- public class FlavorService
+ public class FlavorService implements CRUDService<Flavor, Long, FlavorDTO>
 
  {
 
     @Autowired
     FlavorRepository flvRepo;
 
+    @Override
     @Transactional
-    public Flavor createFlavor(FlavorDTO flvDTO)
+    public Flavor create(FlavorDTO flvDTO)
 
     { return flvRepo.save(new Flavor(flvDTO.name(), flvDTO.description(), flvDTO.available())); }
 
-    public Flavor readFlavor(Long id) { return flvRepo.findById(id).orElse(null); }
+    @Override
+    public Flavor read(Long id) { return flvRepo.findById(id).orElse(null); }
 
+    @Override
     @Transactional
-    public Flavor updateFlavor(Long id, FlavorDTO flvDTO)
+    public Flavor update(Long id, FlavorDTO flvDTO)
 
     {
 
@@ -47,8 +50,9 @@
 
     }
 
+    @Override
     @Transactional
-    public boolean deleteFlavor(Long id)
+    public boolean delete(Long id)
 
     {
 
@@ -58,6 +62,7 @@
 
     }
 
-    public List<Flavor> getAllFlavors() { return flvRepo.findAll(); }
+    @Override
+    public List<Flavor> getAll() { return flvRepo.findAll(); }
 
  }
