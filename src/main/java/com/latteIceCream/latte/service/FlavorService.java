@@ -12,7 +12,7 @@
  import java.util.List;
 
  @Service
- public class FlavorService implements CRUDService<Flavor, Long, FlavorDTO>
+ public class FlavorService implements EntityService<Flavor, Long, FlavorDTO>
 
  {
 

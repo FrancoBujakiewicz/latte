@@ -3,7 +3,7 @@
 
  import java.util.List;
 
- public interface CRUDService<T, Long, DTO>
+ public interface EntityService<T, Long, DTO>
 
  {
 

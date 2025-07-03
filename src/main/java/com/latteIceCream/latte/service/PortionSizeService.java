@@ -12,7 +12,7 @@
  import java.util.List;
 
  @Service
- public class PortionSizeService implements CRUDService<PortionSize, Long, PortionSizeDTO>
+ public class PortionSizeService implements EntityService<PortionSize, Long, PortionSizeDTO>
 
  {
 
