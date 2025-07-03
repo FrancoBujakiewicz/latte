@@ -13,11 +13,13 @@
 
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.http.ResponseEntity;
+ import org.springframework.validation.annotation.Validated;
  import org.springframework.web.bind.annotation.*;
  import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
  @RestController
  @RequestMapping("/flavors")
+ @Validated
  public class FlavorController
 
  {
@@ -30,14 +32,14 @@
 
     {
 
-       Flavor flavor = flavorService.createFlavor(flvDTO);
+       Flavor flavor = flavorService.create(flvDTO);
 
        if(flavor == null){ return ResponseEntity.badRequest().build(); }
 
        URI location = ServletUriComponentsBuilder
                       .fromCurrentRequest()
                       .path("/{id}")
-                      .buildAndExpand(flavor.getName())
+                      .buildAndExpand(flavor.getId())
                       .toUri();
 
        return ResponseEntity.created(location).build();
@@ -45,16 +47,16 @@
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Flavor> getFlavor(@PathVariable Long id)
+    public ResponseEntity<Flavor> get(@PathVariable Long id)
 
-    { return ResponseEntity.of(Optional.ofNullable(flavorService.readFlavor(id))); }
+    { return ResponseEntity.of(Optional.ofNullable(flavorService.read(id))); }
 
-    @PatchMapping("/{id}") public ResponseEntity<Flavor> patchFlavor
+    @PatchMapping("/{id}") public ResponseEntity<Flavor> patch
     (@PathVariable Long id, @Valid @RequestBody FlavorDTO flvDTO)
 
     {
 
-       Flavor flavor = flavorService.updateFlavor(id, flvDTO);
+       Flavor flavor = flavorService.update(id, flvDTO);
 
        if(flavor == null) { return ResponseEntity.notFound().build(); }
 
@@ -63,17 +65,17 @@
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteFlavor(@PathVariable Long id)
+    public ResponseEntity delete(@PathVariable Long id)
 
     {
 
-       if(!flavorService.deleteFlavor(id)) { return ResponseEntity.internalServerError().build(); }
+       if(!flavorService.delete(id)) { return ResponseEntity.internalServerError().build(); }
 
        return ResponseEntity.noContent().build();
 
     }
 
     @GetMapping
-    public ResponseEntity<List<Flavor>> getAll(){ return ResponseEntity.ok(flavorService.getAllFlavors()); }
+    public ResponseEntity<List<Flavor>> getAll(){ return ResponseEntity.ok(flavorService.getAll()); }
 
  }

@@ -9,6 +9,7 @@
 
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.http.ResponseEntity;
+ import org.springframework.validation.annotation.Validated;
  import org.springframework.web.bind.annotation.*;
  import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -18,6 +19,7 @@
 
  @RestController
  @RequestMapping("/portionSizes")
+ @Validated
  public class PortionSizeController
 
  {
@@ -26,18 +28,18 @@
     PortionSizeService portionSizeService;
 
     @PostMapping
-    public ResponseEntity<PortionSize> postPortionSize(@Valid @RequestBody PortionSizeDTO pszDTO)
+    public ResponseEntity<PortionSize> post(@Valid @RequestBody PortionSizeDTO pszDTO)
 
     {
 
-       PortionSize portionSize = portionSizeService.createPortionSize(pszDTO);
+       PortionSize portionSize = portionSizeService.create(pszDTO);
 
        if(portionSize == null){ return ResponseEntity.badRequest().build(); }
 
        URI location = ServletUriComponentsBuilder
                       .fromCurrentRequest()
                       .path("/{id}")
-                      .buildAndExpand(portionSize.getName())
+                      .buildAndExpand(portionSize.getId())
                       .toUri();
 
        return ResponseEntity.created(location).build();
@@ -45,16 +47,16 @@
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PortionSize> getPortionSize(@PathVariable Long id)
+    public ResponseEntity<PortionSize> get(@PathVariable Long id)
 
-    { return ResponseEntity.of(Optional.ofNullable(portionSizeService.readPortionSize(id))); }
+    { return ResponseEntity.of(Optional.ofNullable(portionSizeService.read(id))); }
 
-    @PatchMapping("/{id}") public ResponseEntity<PortionSize> patchPortionSize
+    @PatchMapping("/{id}") public ResponseEntity<PortionSize> patch
     (@PathVariable Long id, @Valid @RequestBody PortionSizeDTO pszDTO)
 
     {
 
-       PortionSize portionSize = portionSizeService.updatePortionSize(id, pszDTO);
+       PortionSize portionSize = portionSizeService.update(id, pszDTO);
 
        if(portionSize == null) { return ResponseEntity.notFound().build(); }
 
@@ -63,11 +65,11 @@
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletePortionSize(@PathVariable Long id)
+    public ResponseEntity delete(@PathVariable Long id)
 
     {
 
-       if(!portionSizeService.deletePortionSize(id))
+       if(!portionSizeService.delete(id))
 
        { return ResponseEntity.internalServerError().build(); }
 
@@ -77,6 +79,6 @@
 
        @GetMapping
        public ResponseEntity<List<PortionSize>> getAll()
-       { return ResponseEntity.ok(portionSizeService.getAllPortionSizes()); }
+       { return ResponseEntity.ok(portionSizeService.getAll()); }
 
  }
