@@ -25,12 +25,13 @@
 
     public Product() {}
 
-    public Product(String name, String description, BigDecimal price, Integer stock)
+    public Product(String name, String description, BigDecimal price, Brand brand, Integer stock)
 
     {
 
        super(name, description);
        this.price = price;
+       this.brand = brand;
        this.stock = stock;
 
     }
@@ -38,8 +39,8 @@
     public BigDecimal getPrice(){ return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
 
-    public Brand getLabel() { return brand; }
-    public void setLabel(Brand brand) { this.brand = brand; }
+    public Brand getBrand() { return brand; }
+    public void setBrand(Brand brand) { this.brand = brand; }
 
     public Integer getStock() { return stock; }
     public void setStock(Integer stock) { this.stock = stock; }

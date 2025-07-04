@@ -19,8 +19,8 @@
  @ActiveProfiles("test")
  public class FlavorEntityTest {
 
-    @Autowired
-    MockMvc mockMvc;
+   // @Autowired
+   // MockMvc mockMvc;
 
     @Test
     public void flavorPostRequest() throws Exception

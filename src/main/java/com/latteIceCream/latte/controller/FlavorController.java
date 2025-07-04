@@ -28,7 +28,7 @@
     FlavorService flavorService;
 
     @PostMapping
-    public ResponseEntity<Flavor> postFlavor(@Valid @RequestBody FlavorDTO flvDTO)
+    public ResponseEntity<Flavor> post(@Valid @RequestBody FlavorDTO flvDTO)
 
     {
 
